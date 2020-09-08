@@ -1,0 +1,5 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\Gabriel\Desktop\BlazorAtividade1-master\Client\bin\Debug\netstandard2.1\wwwroot\" />
+  <ContentRoot BasePath="_content/Blazorise" Path="C:\Users\Gabriel\.nuget\packages\blazorise\0.9.1.2\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazorise.Bootstrap" Path="C:\Users\Gabriel\.nuget\packages\blazorise.bootstrap\0.9.1.2\build\..\staticwebassets\" />
+</StaticWebAssets>

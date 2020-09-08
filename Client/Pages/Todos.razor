@@ -1,0 +1,54 @@
+@page "/todos"
+@using blazorApp.Shared
+
+<Container>
+<Addons>
+    <Addon AddonType="AddonType.Body">
+        <TextEdit Placeholder="Insira a tarefa a ser feita:" @bind-Text="newTodo" />
+    </Addon>
+    <Addon AddonType="AddonType.End">
+        <Button Color="Color.Secondary" @onclick="AddTask">Add</Button>
+    </Addon>
+</Addons>
+<Column ColumnSize="ColumnSize.Is4">
+<Table>
+    <TableHeader ThemeContrast="ThemeContrast.Dark"></TableHeader>
+    <TableBody>
+
+            @foreach (var item in listaTodo)
+            {
+            <Row>
+            <Column ColumnSize="ColumnSize.Is6">
+                <Alert Color="Color.Primary" Visible="true">
+                    @item.Item
+                    </Alert>
+            </Column>
+            <Column ColumnSize="ColumnSize.Is6">
+                <Alert Color="Color.Secondary" Visible="true">
+                    <Check TValue="bool" @bind-Checked="@item.Done">
+                    @(item.Done ? "Feito" : "Não Feito")
+                    </Check>
+                </Alert>
+            </Column>
+            </Row>
+            }    
+    </TableBody>
+</Table>
+</Column>
+</Container>
+@code{
+    List<todo> listaTodo;
+    public string newTodo { get; set; }
+    private void AddTask()
+    {
+        listaTodo.Add(new todo { Item = newTodo });
+    }
+    protected override void OnInitialized()
+    { //método executado quando um arquivo razor é carregado
+        listaTodo = new List<todo>(){
+        new todo(){Item = "teste", Done = true},
+        new todo(){Item = "teste2", Done = false},
+        new todo(){Item = "teste3", Done = false}
+        };
+    }
+}

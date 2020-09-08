@@ -1,0 +1,90 @@
+﻿@page "/"
+@using System
+@using blazorApp.Shared
+
+<h3>Formulário!</h3>
+
+<EditForm Model="user" OnValidSubmit="Create">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <p>
+        <div>
+            <Column ColumnSize="ColumnSize.Is5">
+            <label>Título:</label>
+            <InputText Placeholder= "Digite o título aqui" class="form-control" @bind-Value="@user.titulo" />
+            <ValidationMessage For="@( () => user.titulo )" />
+            </Column>
+        </div>
+        </p>
+
+<TableBody>
+        <TableRow>
+        <TableRowCell>
+            <label>&nbsp &nbsp Nome:</label>
+            <InputText Placeholder= "Digite o nome aqui" class="form-control" @bind-Value="@user.nome" />
+            <ValidationMessage For="@( () => user.nome )" />
+        </TableRowCell>
+
+        <TableRowCell>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</TableRowCell>
+
+        <TableRowCell>
+            <label>Sobrenome:</label>
+            <InputText Placeholder= "Digite o sobrenome aqui" class="form-control" @bind-Value="@user.sobrenome" />
+            <ValidationMessage For="@( () => user.sobrenome )" />
+        </TableRowCell>
+        </TableRow>
+</TableBody>
+
+        <p>
+        <div>
+            <Column ColumnSize="ColumnSize.Is5">
+            <label>Data de Nascimento:</label>
+            <InputDate Placeholder= "dd/mm/aaaa" class="form-control" @bind-Value="@user.data_nasc" />
+            <ValidationMessage For="@( () => user.data_nasc )" />
+            </Column>
+        </div>
+        </p>
+
+        <p>
+        <div>
+            <Column ColumnSize="ColumnSize.Is5">
+            <label>Senha:</label>
+            <InputText Placeholder= "digite sua senha" id="senha" name="senha" class="form-control" @bind-Value="@user.senha" />
+            <ValidationMessage For="@( () => user.senha )" />
+            </Column>
+        </div>
+        </p>
+
+        <p>
+        <div>
+            <Column ColumnSize="ColumnSize.Is5">
+            <label>Confirmar Senha:</label>
+            <InputText Placeholder= "confirme sua senha" id="confSenha" name="confSenha" class="form-control" @bind-Value="@user.confSenha"/>
+            <ValidationMessage For="@( () => user.confSenha )" />
+            </Column>
+        </div>
+        </p>
+
+        <Column ColumnSize="ColumnSize.Is6">
+                <Alert Color="Color.Secondary" Visible="true">
+                    <Check TValue="bool" @bind-Checked="@user.confirmacao">
+                    Aceito os Termos
+                    </Check>
+                </Alert>
+            </Column>
+
+    </div>
+    <button class="btn btn-success" type="submit">Salvar</button>
+</EditForm>
+
+@code {
+
+    User user = new User();
+
+    
+        private void Create()
+        {
+            Console.WriteLine("Confirmação de Cadastro");
+        }
+
+    }
